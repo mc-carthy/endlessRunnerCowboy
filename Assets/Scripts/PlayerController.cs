@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour {
 	private Rigidbody2D rb;
 	private Animator anim;
 	private float jumpForce = 12f, forwardForce = 0f;
-	private bool canJump;
+	private bool canJump = true;
 	private Button jumpBtn;
 
 	private void Awake () {
@@ -40,7 +40,13 @@ public class PlayerController : MonoBehaviour {
 
 	private void OnCollisionEnter2D (Collision2D col) {
 		if (col.gameObject.tag == "obstacle") {
+			if (Mathf.Abs (rb.velocity.magnitude) < 0.2) {
+				canJump = true;
+			}
 			anim.Play ("idle");
+		}
+		if (col.gameObject.tag == "ground") {
+			canJump = true;
 		}
 	}
 

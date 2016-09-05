@@ -12,7 +12,7 @@ public class BackgroundScaler : MonoBehaviour {
 		}
 
 		if (gameObject.name == "ground") {
-			transform.localScale = new Vector3 (width + 3, 4, 0);
+			transform.localScale = new Vector3 (width + 4, 4, 0);
 		}
 	}
 }
