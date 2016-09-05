@@ -40,7 +40,7 @@ public class PlayerController : MonoBehaviour {
 
 	private void OnCollisionEnter2D (Collision2D col) {
 		if (col.gameObject.tag == "obstacle") {
-			if (Mathf.Abs (rb.velocity.magnitude) < 0.2) {
+			if (Mathf.Abs (rb.velocity.y) < 0.2) {
 				canJump = true;
 			}
 			anim.Play ("idle");
