@@ -14,13 +14,13 @@ public class PlayerDeath : MonoBehaviour {
 	}
 
 	private void OnTriggerEnter2D (Collider2D trig) {
-		if (trig.tag == "Collector") {
+		if (trig.tag == "collector") {
 			PlayerDiedEndGame ();
 		}
 	}
 
 	private void OnCollisionEnter2D (Collision2D col) {
-		if (col.gameObject.tag == "Collector") {
+		if (col.gameObject.tag == "zombie") {
 			PlayerDiedEndGame ();
 		}
 	}

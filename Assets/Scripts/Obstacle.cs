@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Obstacle : MonoBehaviour {
 
-	private float speed = -4f;
+	private float speed = -5f;
 
 	private Rigidbody2D rb;
 

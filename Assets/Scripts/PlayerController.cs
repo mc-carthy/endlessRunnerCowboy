@@ -48,6 +48,9 @@ public class PlayerController : MonoBehaviour {
 		if (col.gameObject.tag == "ground") {
 			canJump = true;
 		}
+		if (col.gameObject.tag == "zombie") {
+			//PlayerDeath.endGame();
+		}
 	}
 
 	private void OnCollisionExit2D (Collision2D col) {
