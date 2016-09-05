@@ -7,12 +7,14 @@ public class PlayerController : MonoBehaviour {
 	[SerializeField]
 	private AudioClip jumpClip;
 	private Rigidbody2D rb;
+	private Animator anim;
 	private float jumpForce = 12f, forwardForce = 0f;
 	private bool canJump;
 	private Button jumpBtn;
 
 	private void Awake () {
 		rb = GetComponent<Rigidbody2D> ();
+		anim = GetComponent<Animator> ();
 		jumpBtn = GameObject.Find ("jumpButton").GetComponent<Button> ();
 		jumpBtn.onClick.AddListener (() => Jump ());
 	}
@@ -33,6 +35,18 @@ public class PlayerController : MonoBehaviour {
 			}
 			rb.velocity = new Vector2 (forwardForce, jumpForce);
 			//AudioSource.PlayClipAtPoint (jumpClip, transform.position);
+		}
+	}
+
+	private void OnCollisionEnter2D (Collision2D col) {
+		if (col.gameObject.tag == "obstacle") {
+			anim.Play ("idle");
+		}
+	}
+
+	private void OnCollisionExit2D (Collision2D col) {
+		if (col.gameObject.tag == "obstacle") {
+			anim.Play ("run");
 		}
 	}
 }
